@@ -46,8 +46,8 @@ The transcript interface visually distinguishes between the Fan (User - Blue) an
 ### 1. Clone the repository
 
 ```bash
-git clone [https://github.com/pathu11/Sportbot-Live.git](https://github.com/pathu11/Sportbot-Live.git)
-cd Sportbot-Live
+git clone [https://github.com/pathu11/sportbot.git](https://github.com/pathu11/sportbot.git)
+cd sportbot
 ```
 
 ### 2. Install dependencies
