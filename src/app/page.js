@@ -31,6 +31,12 @@ export default function Home() {
   const analyserRef = useRef(null);
   const animationFrameRef = useRef(null);
 
+  // --- Logic ---
+
+
+
+
+
   // --- Effects ---
   useEffect(() => {
     // Client-side initialization
@@ -49,8 +55,6 @@ export default function Home() {
       if (synthRef.current) synthRef.current.cancel();
     };
   }, [initSpeechRecognition]);
-
-  // --- Logic ---
   const saveCurrentSession = () => {
     if (transcript.length === 0) return;
     const newSession = {
