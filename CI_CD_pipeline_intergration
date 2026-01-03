@@ -1,0 +1,68 @@
+## 🛠 Step-by-Step CI/CD Setup Guide
+1. Link your Project to Vercel
+Before the pipeline can work, your local computer and GitHub need to know which Vercel project they are talking to.
+
+Open your terminal in your project root.
+
+    Run: npx vercel link
+
+Log in if prompted, then select your Vercel project.
+
+This creates a folder named .vercel/.
+
+    Open .vercel/project.json and copy these two values:
+
+    - orgId (This is your Team/User ID)
+
+    - projectId (This is your specific Project ID)
+
+2. Generate a Vercel Access Token
+GitHub needs a "key" to enter your Vercel account.
+
+    Go to your Vercel Account Settings > Tokens.
+
+    Click Create.
+
+    Name it GitHub-Action-Token and set the scope to your account/team.
+
+    Copy the Token immediately (it will disappear forever once you close the page).
+
+3. Save Secrets in GitHub
+    Now, give these values to GitHub so the pipeline can use them securely.
+
+    Go to your repository on GitHub.
+
+    Click Settings (top tab) → Secrets and variables → Actions.
+
+    Click New repository secret and add these three:
+
+        Name: VERCEL_TOKEN | Value: (The token from Step 2)
+
+        Name: VERCEL_ORG_ID | Value: (The orgId from Step 1)
+
+        Name: VERCEL_PROJECT_ID | Value: (The projectId from Step 1)
+
+4. Create the Pipeline File
+    GitHub looks for "instructions" in a very specific folder.
+
+    In your project, create the folder: .github/workflows/
+
+    Create a file inside named: main_pipeline.yml
+
+    Paste the configuration code we discussed (the one containing vercel build and vercel deploy).
+
+5. Final Code Check (The "CI" part)
+        Next.js is strict during production builds. To ensure your pipeline doesn't fail immediately:
+
+        Fix Lint Errors: Run npm run lint locally and fix any "unescaped entities" or "dependency" errors.
+
+        Fix Build Errors: Run npm run build locally. If you see the "ReferenceError," add export const dynamic = 'force-dynamic'; to the top of the failing page.
+
+6. Push to Activate
+    git add .
+
+    git commit -m "Setup CI/CD pipeline"
+
+    git push origin main
+
+    Go to the Actions tab on GitHub to watch the "assembly line" run!
