@@ -39,7 +39,7 @@ export default function Home() {
     if (saved) {
       try { setSessions(JSON.parse(saved)); } catch (e) { console.error("History Error", e); }
     }
-  }, []);
+  }, [initSpeechRecognition]);
 
   useEffect(() => {
     initSpeechRecognition();
@@ -308,7 +308,7 @@ export default function Home() {
                  <Trophy size={48} className="text-green-500/50" />
               </div>
               <p className="text-lg font-medium text-gray-400">Ready for kick-off</p>
-              <p className="text-sm text-gray-500 mt-2">Ask: "Who won the match yesterday?"</p>
+              <p className="text-sm text-gray-500 mt-2">Ask: &quot;Who won the match yesterday?&quot;</p>
             </div>
           )}
 
