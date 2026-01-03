@@ -48,7 +48,7 @@ export default function Home() {
       stopVisualizer();
       if (synthRef.current) synthRef.current.cancel();
     };
-  }, []);
+  }, [initSpeechRecognition]);
 
   // --- Logic ---
   const saveCurrentSession = () => {
